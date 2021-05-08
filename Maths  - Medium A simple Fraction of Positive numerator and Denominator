@@ -1,0 +1,28 @@
+#Maths A simple Fraction medium level question
+def string(n,d):
+    ans=""
+    q=n//d
+    r=n%d
+    ans+=str(q)
+    if (r == 0):
+        return ans
+    else:
+        ans+=(".")
+        hash_map={}
+        while(r !=  0):
+            if r in hash_map:
+                ans = ans[:hash_map[r]]+"(" + ans[hash_map[r]:]
+                ans+=")"
+                break
+            else:
+                hash_map[r]=len(ans)
+                r*=10
+                q=r//d
+                r=r%d
+                ans+=str(q)
+        return ans
+n=14
+d=3
+print(string(n,d))
+        
+    
