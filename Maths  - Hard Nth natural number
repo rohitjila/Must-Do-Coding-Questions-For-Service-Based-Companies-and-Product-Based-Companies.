@@ -1,0 +1,9 @@
+class Solution:
+    def findNth(self,N):
+        res=0
+        pos=1
+        while(N > 0):
+            res+=(pos*(N%9))
+            N//=9
+            pos=pos*10
+        return res
