@@ -1,0 +1,29 @@
+class Solution:
+    def fractionToDecimal(self, n: int, d: int) -> str:
+        ans=""
+        if(n < 0 and d > 0 or n > 0 and d < 0):
+            ans+="-"
+        else:
+            ans+=""
+        n=abs(n)
+        d=abs(d)
+        q=n//d
+        r=n%d
+        ans+=str(q)
+        if (r == 0):
+            return ans
+        else:
+            ans+=(".")
+            hash_map={}
+            while(r !=  0):
+                if r in hash_map:
+                    ans = ans[:hash_map[r]]+"(" + ans[hash_map[r]:]
+                    ans+=")"
+                    break
+                else:
+                    hash_map[r]=len(ans)
+                    r*=10
+                    q=r//d
+                    r=r%d
+                    ans+=str(q)
+            return ans
