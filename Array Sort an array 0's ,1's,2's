@@ -1,0 +1,27 @@
+#The Dutch National Flag algorithm
+arr[low -1]---->0
+arr[high+1]------>2
+arr[low --- mid-1]----1
+
+1.Method Normal Sorting
+2.Method by counting all 0,1 and 2 place it 
+3.Above algorithm
+
+class Solution:
+    def sortColors(self, a: List[int]) -> None:
+        lo = 0
+        hi = len(a) - 1
+        mid = 0
+        while mid <= hi:
+            if a[mid] == 0:
+                a[lo], a[mid] = a[mid], a[lo]
+                lo = lo + 1
+                mid = mid + 1
+            elif a[mid] == 1:
+                mid = mid + 1
+            else:
+                a[mid], a[hi] = a[hi], a[mid] 
+                hi = hi - 1
+                    
+                    
+
