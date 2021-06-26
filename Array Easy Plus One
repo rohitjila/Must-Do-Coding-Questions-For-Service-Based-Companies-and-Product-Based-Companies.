@@ -1,0 +1,14 @@
+class Solution:
+    def increment(self, arr, n):
+        carry=0
+        arr[n-1]=arr[n-1]+1
+        for i in range(n-2,-1,-1):
+            if (arr[i+1] ) == 10:
+                arr[i+1] = 0
+                carry=1
+                arr[i]=(arr[i]+carry)
+                carry=arr[i]//10
+        if (carry == 1 or arr[0] == 10):
+            arr[0]=0
+            arr.insert(0,1)
+        return arr
