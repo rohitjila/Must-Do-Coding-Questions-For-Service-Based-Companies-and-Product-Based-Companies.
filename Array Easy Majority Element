@@ -1,0 +1,24 @@
+class Solution:
+    def element(self,A,N):
+        maj_index = A[0]
+    	count = 1
+    	for i in range(1,len(A)):
+    		if maj_index == A[i]:
+    			count += 1
+    		else:
+    			count -= 1
+    		if count == 0:
+    			maj_index = A[i]
+    			count = 1
+    	return maj_index
+    
+    def majorityElement(self, A, N):
+        cand = self.element(A,N)
+    	count = 0
+    	for i in range(len(A)):
+    		if A[i] == cand:
+    			count += 1
+    	if count > len(A)//2:
+    		return cand
+    	else:
+    		return -1
