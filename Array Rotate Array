@@ -1,0 +1,44 @@
+def array(arr,D,n):
+        #Method 1
+        #T.C = O(n)
+        #S.C=O(d)
+        temp=[]
+        for i in range(D):
+            temp.append(arr[0])
+            arr.pop(0)
+        for i in range(len(temp)):
+            arr.append(temp[i])
+
+
+        #Method 2
+        #T.C=O(n)
+        #S.C=O(1)
+
+        A[0:D]=reversed(A[0:D])
+        A[D:N]=reversed(A[D:N])
+        A[0:N]=reversed(A[0:N])
+
+        #Method 2
+        #T.C=O(n)
+        #S.C=O(1)
+
+        i=0
+        j=D-1
+        while(i < j):
+            arr[i],arr[j]=arr[j],arr[i]
+            i+=1
+            j-=1
+
+        i=D
+        j=n-1
+        while(i < j):
+            arr[i],arr[j]=arr[j],arr[i]
+            i+=1
+            j-=1
+
+        i=0
+        j=n-1
+        while(i < j):
+            arr[i],arr[j]=arr[j],arr[i]
+            i+=1
+            j-=1
