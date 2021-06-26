@@ -1,0 +1,37 @@
+class Solution:
+t.c=O(n)
+s.c=O(1)
+    def productExceptSelf(self, nums, n):
+        arr=[]
+        prod=1
+        for i in nums:
+            prod*=i
+            
+        for i in nums:
+            arr.append(int(prod*(i**-1)))
+        for i in range(n):
+            arr[i]=int(arr[i])
+        return arr
+        
+        
+ #Brute force by creating three array left,right and produ
+ and calculate the left and right and multiply both to get the product
+ 
+ t.c=O(n)
+ s.c=O(n)
+ 
+ 
+ class Solution:
+    def productExceptSelf(self, nums, n):
+        left=[0]*n
+        right=[0]*n
+        prod=[0]*n
+        left[0]=1
+        right[n-1]=1
+        for i in range(1,n):
+            left[i]=arr[i-1]*left[i-1]
+        for j in range(n-2,-1,-1):
+            right[j]=arr[j+1]*right[j+1]
+        for i in range(n):
+            prod[i]=left[i]*right[i]
+        return prod
