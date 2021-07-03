@@ -1,0 +1,22 @@
+class Solution:
+    def wood(self,tree,n,m):
+        res=0
+        for i in range(n):
+            if (tree[i] > m):
+                res+=tree[i]-m
+        return res
+        
+    def find_height(self,tree,n,k):
+        tree.sort()
+        low=0
+        high=tree[n-1]
+        while(low <= high):
+            mid=low+(high-low)//2
+            collected=self.wood(tree,n,mid)
+            if (collected == k):
+                return mid
+            elif (collected > k):
+                low=mid+1
+            else:
+                high=mid-1
+        return -1
