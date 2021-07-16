@@ -1,0 +1,10 @@
+class Solution:
+    def maxProfit(self, arr: List[int]) -> int:
+        Min=9999999
+        profit=0
+        for i in range(len(arr)):
+            if (arr[i] < Min):
+                Min=arr[i]
+            else:
+                profit=max(profit,arr[i] - Min)
+        return profit
