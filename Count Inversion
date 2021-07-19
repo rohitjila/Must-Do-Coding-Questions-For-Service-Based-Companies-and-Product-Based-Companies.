@@ -1,0 +1,42 @@
+class Solution:
+    def inversionCount(self, arr, n):
+        temp=[0]*n
+        return self._mergesort(arr,temp,0,n-1)
+        
+    def _mergesort(self,arr,temp,left,right):
+        ic=0
+        if (left < right):
+            mid=(left+(right-left)//2)
+            ic+=self._mergesort(arr,temp,left,mid)
+            ic+=self._mergesort(arr,temp,mid+1,right)
+            ic+=self.merge(arr,temp,left,mid,right)
+        return ic
+            
+    def merge(self,arr,temp,left,mid,right):
+        i=left
+        j=mid+1
+        k=left
+        ic=0
+        while(i <= mid and j <= right):
+            if (arr[i] <= arr[j]):
+                temp[k]=arr[i]
+                k+=1
+                i+=1
+                
+            else:
+                temp[k]=arr[j]
+                ic+=(mid-i+1)
+                j+=1
+                k+=1
+                
+        while(i <= mid):
+            temp[k]=arr[i]
+            i+=1
+            k+=1
+        while(j <= right):
+            temp[k]=arr[j]
+            j+=1
+            k+=1
+        for m in range(left,right+1):
+            arr[m]=temp[m] 
+        return ic
