@@ -1,0 +1,19 @@
+def array(A):
+    A.sort ()
+    res=set()
+    for i in range (len (A) - 2):
+        j = i + 1
+        k = len (A) - 1
+        while j < k:
+            s = A[i] + A[j] + A[k]
+            if s == 0:
+                res.add((A[i],A[j],A[k]))
+                i+=1
+                j-=1
+            if s < 0:
+                j += 1
+            else:
+                k -= 1
+    return res
+arr=[-1 ,0 ,1 ,2 ,-1 ,-4]
+print(array(arr))
