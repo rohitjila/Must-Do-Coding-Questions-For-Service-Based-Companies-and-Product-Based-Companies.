@@ -1,0 +1,13 @@
+def maxLen(n, arr):
+    dic={}
+    maxi=0
+    curr_sum=0
+    for i in range(n):
+        curr_sum+=arr[i]
+        if (curr_sum == 0):
+            maxi=i+1
+        if curr_sum in dic:
+            maxi=max(maxi,i - dic[curr_sum])
+        else:
+            dic[curr_sum]=i
+    return maxi
