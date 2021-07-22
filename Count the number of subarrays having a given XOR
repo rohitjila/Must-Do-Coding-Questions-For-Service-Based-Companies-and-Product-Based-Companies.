@@ -1,0 +1,12 @@
+from collections import defaultdict
+def xor_sub(arr,n,k):
+    hashtable=defaultdict(lambda : 0)
+    count=0
+    xor=0
+    for i in arr:
+        xor=xor^i
+        if (xor == k):
+            count+=1
+        if hashtable[xor^k]:
+            count+=hashtable[xor ^ b]
+        hashtable[xor]+=1
