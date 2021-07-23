@@ -1,0 +1,10 @@
+def array(arr,n):
+    for i in range(n):
+        x=arr[i]%n
+        arr[x]=arr[x]+n
+    for i in range(n):
+        if (arr[i] >= 2*n):
+            print(i,end=" ")
+arr=[0, 4, 3, 2, 7, 8, 2, 3, 1]
+n=len(arr)
+array(arr,n)
