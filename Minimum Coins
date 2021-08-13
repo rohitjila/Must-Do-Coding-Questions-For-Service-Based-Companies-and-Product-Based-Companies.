@@ -1,0 +1,11 @@
+def array(arr,n,V):
+    ans=[]
+    for i in range(n-1,-1,-1):
+        while(V >= arr[i]):
+            V-=arr[i]
+            ans.append(arr[i])
+    return (len(ans))
+arr=[1,2,5,10,20,50,100,500,1000]
+n=len(arr)
+V=49
+print(array(arr,n,V))
