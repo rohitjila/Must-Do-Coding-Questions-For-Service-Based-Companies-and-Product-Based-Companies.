@@ -1,0 +1,22 @@
+def find(pattern,word):
+    if (len(pattern) != len(word)):
+        return False
+ 
+    arr = [0 for i in range(128)]
+ 
+    Len = len(word)
+ 
+    for i in range(Len):
+        if (arr[ord(pattern[i])] == 0):
+            arr[ord(pattern[i])] = word[i]
+        elif (arr[ord(pattern[i])] != word[i]):
+            return False
+     
+    return True
+def findSpecificPattern(Dict, pattern):
+    res=[]
+    for i in range(len(Dict)):
+        if (find(pattern,Dict[i])):
+            res.append(Dict[i])
+    res.sort()
+    return res
