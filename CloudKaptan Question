@@ -1,0 +1,20 @@
+res=[]
+n=input()
+k=int(input())
+for i in range(len(n)-k+1):
+    char=[]
+    for j in range(i,len(n)):
+        char.append(n[j])
+        if (len(char) == k):
+            res.append(n[i:j+1])
+output=[]
+for i in range(len(res)):
+    out=list(res[i])
+    output.append(out)
+for i in range(len(output)):
+    s=set()
+    for j in range(k):
+        if (output[i][j] in s):
+            print("".join(output[i]))
+        else:
+            s.add(output[i][j])
