@@ -1,0 +1,16 @@
+def Permutations(str1,str2):
+    if (len(str1) != len(str2)):
+        return False
+    count=[0 for i in range(256)]
+    for i in range(len(str1)):
+        count[ord(str1[i])] +=1
+        count[ord(str2[i])] -=1 
+        
+    for i in range(len(count)):
+        if (count[i]):
+            return False
+    return True
+  
+str1 = "geeksforgeeksm"
+str2 = "forgeeksgeeksj"
+print(permutation(str1,str2))
