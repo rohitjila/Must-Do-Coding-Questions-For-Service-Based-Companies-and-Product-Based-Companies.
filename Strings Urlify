@@ -1,0 +1,15 @@
+def string(s):
+    print(s.replace(" ","%20"))
+s="Mr John Smith"
+string(s)
+
+def string(v,n):
+    s=list(v)
+    for i in range(n-1,-1,-1):
+        if (s[i] == " "):
+            s[i]="%20"
+    return ("".join(s))
+        
+v="Mr John Smith"
+n=len(v)
+print(string(v,n))
