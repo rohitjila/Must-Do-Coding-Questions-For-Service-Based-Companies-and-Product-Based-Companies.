@@ -1,0 +1,15 @@
+from collections import defaultdict
+class Solution:
+    #Function to return the position of the first repeating element.
+    def firstRepeated(self,arr, n):
+        Min=-1
+        hash_map=defaultdict(lambda : 0)
+        for i in range(n-1,-1,-1):
+            if arr[i] in hash_map:
+                Min=i
+            else:
+                hash_map[arr[i]]=1
+        if (Min != -1):
+            return (Min+1)
+        else:
+            return Min
