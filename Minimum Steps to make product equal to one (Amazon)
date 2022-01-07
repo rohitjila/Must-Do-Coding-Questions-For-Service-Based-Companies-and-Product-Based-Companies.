@@ -1,0 +1,25 @@
+#User function Template for python3
+
+class Solution:
+    def makeProductOne(self, arr,n):
+        pos=0
+        neg=0
+        ans=0
+        zero=0
+        for i in range(n):
+            if (arr[i] == 0):
+                zero+=1
+            if (arr[i] < 0):
+                neg+=1
+                ans+=(-1 - (arr[i]))
+            if (arr[i] > 0):
+                pos+=1
+                ans+=(arr[i]-1)
+        if (neg % 2 == 0):
+            ans+=zero
+        else:
+            if (zero > 0):
+                ans+=zero
+            else:
+                ans+=2
+        return ans
