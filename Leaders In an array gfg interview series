@@ -1,0 +1,21 @@
+from collections import deque
+class Solution:
+    #Back-end complete function Template for Python 3
+    
+    #Function to find the leaders in the array.
+    def leaders(self, arr, N):
+        suff=[]
+        suff.append(arr[N-1])
+        for i in range(N-2,-1,-1):
+            if (arr[i] >= suff[-1]):
+                suff.append(arr[i])
+        rev=suff[::-1]
+        return rev
+                
+
+        stack = deque()
+        for i in range(len(arr)):
+            while stack and stack[-1] < arr[i]:
+                stack.pop()
+            stack.append(arr[i])
+        return stack
