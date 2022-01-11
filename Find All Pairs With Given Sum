@@ -1,0 +1,12 @@
+from collections import defaultdict
+class Solution:
+    def allPairs(self, A, B, N, M, X):
+        hashmap=defaultdict(lambda : 0)
+        ans=[]
+        A.sort()
+        for i in range(M):
+            hashmap[B[i]]+=1
+        for i in range(N):
+            if (hashmap[X - A[i]] >= 1):
+                ans.append([A[i],X-A[i]])
+        return ans
