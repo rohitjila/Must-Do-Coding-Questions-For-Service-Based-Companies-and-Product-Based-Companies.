@@ -1,0 +1,33 @@
+#User function Template for python3
+
+class Solution:
+    def setbits(self,n):
+        count=0
+        while(n):
+            if (n & 1):
+                count+=1
+            n = n // 2
+        return count
+    def minVal(self, a, b):
+        x=a
+        rem=self.setbits(x) - self.setbits(b)
+        val=0
+        if (rem > 0):
+            pos=0
+            while(rem):
+                if ((x & 1 << pos) > 0):
+                    val+=(1 << pos)
+                    rem-=1
+                pos+=1
+            x-=val
+            
+        else:
+            rem=abs(rem)
+            pos=0
+            while(rem):
+                if ((x & 1 << pos) == 0):
+                    val+=(1 << pos)
+                    rem-=1
+                pos+=1
+            x+=val
+        return x
