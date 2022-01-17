@@ -1,0 +1,18 @@
+class Solution:
+    def isNum(self,s):
+        if (s >= '0' and s <= "9"):
+            return True
+        return False
+    def atoi(self,string):
+        flag=1
+        i=0
+        res=0
+        if (string[0] == "-"):
+            flag=-1
+            i+=1
+        for j in range(i,len(string)):
+            if not self.isNum(string[j]):
+                return -1
+            res = res*10 + (ord(string[j]) - ord('0'))
+        return flag*res
+        
