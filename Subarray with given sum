@@ -1,0 +1,16 @@
+from collections import defaultdict
+class Solution:
+    def findSubarraySum(self,arr, n, Sum):
+        count=0
+        mp=defaultdict(lambda : 0)
+        cs=0
+        for i in range(n):
+            cs=cs+arr[i]
+            if (cs == Sum):
+                count+=1
+            if (cs-Sum) in mp:
+                count+=mp[-Sum+cs] # to print index do print(mp[cs - Sum] + 1 to i)
+            mp[cs]+=1 and #here we will do mp[cs] = i if we want to print the index value
+        return count
+            
+        
