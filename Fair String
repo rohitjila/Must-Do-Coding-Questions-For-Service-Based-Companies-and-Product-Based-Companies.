@@ -1,0 +1,18 @@
+class Solution:
+    def solve(self,n,s,a):
+        mn=10 ** 10
+        ans=[0 for i in range(4)]
+        ans1="01"*(len(s)//2)
+        ans2="10"*(len(s)//2)
+        ans3=("0011"*(len(s)//2))
+        ans4=("1100"*(len(s)//2))
+        for i in range(n):
+            if (s[i] != ans1[i]):
+                ans[0]+=a[i]
+            if (s[i] != ans2[i]):
+                ans[1]+=a[i]
+            if (s[i] != ans3[i]):
+                ans[2]+=a[i]
+            if (s[i] != ans4[i]):
+                ans[3]+=a[i]
+        return min(ans)
