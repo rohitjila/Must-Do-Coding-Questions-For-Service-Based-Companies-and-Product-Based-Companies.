@@ -1,0 +1,17 @@
+from heapq import heapify,heappop,heappush
+class Solution:
+    def solve(self,n,A,x,k):
+        pq=[]
+        heapify(pq)
+        i=1
+        while(i < n):
+            diff=A[i-1] - A[i]
+            heappush(pq,diff)
+            x-=abs(diff)
+            while(pq and x < 0 and k > 0):
+                x+=abs(heappop(pq))
+                k-=1
+            if (x < 0):
+                break
+            i+=1
+        return i
