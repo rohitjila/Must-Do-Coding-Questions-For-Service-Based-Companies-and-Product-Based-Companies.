@@ -1,0 +1,26 @@
+from collections import defaultdict
+class Solution:
+
+    def longestKSubstr(self, s, k):
+        ans=-1
+        mp=defaultdict(lambda : 0)
+        i=0
+        j=0
+        while(j < len(s)):
+            mp[s[j]]+=1
+            # print(mp)
+            if (len(mp) < k):
+                j+=1
+                
+            elif (len(mp) == k):
+                ans=max(ans,j-i+1)
+                j+=1
+                    
+            elif (len(mp) > k):
+                while(len(mp) > k):
+                    mp[s[i]]-=1
+                    if (mp[s[i]] == 0):
+                        del mp[s[i]]
+                    i+=1
+                j+=1
+        return ans
