@@ -1,0 +1,19 @@
+import sys
+def solve(arr,n,s1,s2,ls1,ls2):
+    if (n < 0):
+        if (abs(ls1 - ls2) > 1):
+            return sys.maxsize
+        return abs(s1 - s2)
+    return min(solve(arr,n-1,s1,s2,ls1,ls2),solve(arr,n-1,arr[n]+s1,s2 - arr[n],ls1+1,ls2-1))
+    
+    
+def minParition(arr):
+    s1=0
+    s2=sum(arr)
+    totalSum=sum(arr)
+    n=len(arr)
+    mn=solve(arr,n-1,s1,s2,0,n)
+    print(mn)
+    print(int(totalSum/2 - mn/2),int(totalSum/2 + mn/2))
+arr=list(map(int,input().split()))
+print(minParition(arr))
