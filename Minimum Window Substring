@@ -1,0 +1,43 @@
+class Solution:
+    def minWindow(self, s1: str, s2: str) -> str:
+        ans=""
+        mp=defaultdict(lambda : 0)
+        for i in range(len(s2)):
+            mp[s2[i]]+=1
+        mct=0
+        dmc=len(s2)
+        mp2=defaultdict(lambda : 0)
+        i=-1
+        j=-1
+        while(True):
+            flag1=False
+            flag2=False
+            while(i < len(s1)-1 and mct < dmc):
+                i+=1
+                mp2[s1[i]]+=1
+                if (mp2[s1[i]] <= mp[s1[i]]):
+                    mct+=1
+
+                flag1=True
+
+
+            while(j < i and mct == dmc):
+                pans=s1[j+1:i+1]
+                if (len(ans) == 0 or len(pans) < len(ans)):
+                    ans=pans
+                j+=1
+                if (mp2[s1[j]] == 1):
+                    del mp2[s1[j]]
+                else:
+                    mp2[s1[j]]-=1
+
+                if (mp2[s1[j]] < mp[s1[j]]):
+                    mct-=1
+
+                flag2=True
+
+            if (flag1 == False and flag2 == False):
+                break
+
+
+        return ans
