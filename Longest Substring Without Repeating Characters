@@ -1,0 +1,22 @@
+from collections import defaultdict
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        n=len(s)
+        ans=0
+        mp=defaultdict(lambda : 0)
+        i=0
+        j=0
+        while(j < n):
+            mp[s[j]]+=1
+            if (len(mp) == j-i+1):
+                ans=max(ans,len(mp))
+                j+=1
+
+            elif (len(mp) < j-i+1):
+                while(len(mp) < j-i+1):
+                    mp[s[i]]-=1
+                    if (mp[s[i]] == 0):
+                        del mp[s[i]]
+                    i+=1
+                j+=1
+        return ans
