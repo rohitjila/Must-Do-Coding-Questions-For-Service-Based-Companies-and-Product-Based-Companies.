@@ -1,0 +1,30 @@
+
+def dec_to_base(num,base):  
+    base_num = ""
+    while num>0:
+        dig = int(num%base)
+        if dig<10:
+            base_num += str(dig)
+        else:
+            base_num += chr(ord('A')+dig-10) 
+        num //= base
+    base_num = base_num[::-1]  
+    return base_num
+    
+    
+def array(num,base):
+    count = 0
+    output = dec_to_base(num,base)
+    ans=0
+    for i in range(len(output)):
+        if (output[i] != "0"):
+            count = 0
+        else:
+            count+=1
+            ans=max(count,ans)
+    return ans
+    
+num=68
+base=2
+print(array(num,base))
+        
