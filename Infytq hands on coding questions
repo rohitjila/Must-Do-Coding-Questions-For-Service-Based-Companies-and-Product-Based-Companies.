@@ -1,0 +1,45 @@
+# INFYTQ SLOT 10 AM QUESTION
+
+# INPUT - "999 aa 22aa"
+# OUTPUT - "$$aa$22aa"
+
+# INPUT - "Hi there"
+# OUTPUT - "Hi$there"
+
+from collections import defaultdict
+def infytq(s):
+    ans=""
+    mp1=defaultdict(lambda : 0)
+    mp2=defaultdict(lambda : 0)
+    for i in range(len(s)):
+        if (s[i].isdigit()):
+            mp1[s[i]]+=1
+        if (s[i].isalpha()):
+            mp2[s[i]]+=1
+            
+    mx1=0
+    mx2=0
+    for i in mp1:
+        if (mp1[i] > mx1):
+            mx1=mp1[i]
+    for i in mp2:
+        if (mp2[i] > mx2):
+            mx2=mp2[i]
+            
+            
+    res=abs(mx1-mx2)
+    ch = s[res]
+    for i in range(len(s)):
+        if (ch == " " and s[i] == ch):
+            ans+="$"
+        else:
+            if (s[i] == ch):
+                continue
+            if (s[i] == " "):
+                ans+="$"
+            else:
+                ans+=s[i]
+    
+    return ans
+s="Hi there ans"
+print(infytq(s))
